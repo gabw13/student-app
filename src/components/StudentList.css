@@ -1,0 +1,9 @@
+.student-list__heading {
+    color: darkmagenta;
+    font-style: oblique;
+}
+
+.student-list {
+    color: teal;
+    list-style-type: square;
+}

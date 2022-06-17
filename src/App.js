@@ -1,28 +1,35 @@
 import StudentList from "./components/StudentList";
 import ClassInfo from "./components/ClassInfo";
+import "./App.css";
+
+const studentData = [
+  {
+    nameData: "Ada",
+    emailData: "ada@dev.org",
+  },
+  {
+    nameData: "Soo-ah",
+    emailData: "sooah@dev.org",
+  },
+  {
+    nameData: "Chrissy",
+    emailData: "chrissy@dev.org",
+  },
+];
 
 function App() {
-  const studentData = [
-    {
-      nameData: "Ada",
-      emailData: "ada@dev.org",
-    },
-    {
-      nameData: "Soo-ah",
-      emailData: "sooah@dev.org",
-    },
-    {
-      nameData: "Chrissy",
-      emailData: "chrissy@dev.org",
-    },
-  ];
   return (
-    <main>
-      <h1>Attendance</h1>
-      {/* ClassInfo and StudentList components are siblings to each other. */}
-      <ClassInfo classSize={studentData.length}></ClassInfo>
-      <StudentList students={studentData}></StudentList>
-    </main>
+    <div className="App">
+      <header className="App-header">
+        <h1>Ada's Class</h1>
+        <ClassInfo classSize={studentData.length}></ClassInfo>
+      </header>
+      <main>
+        {/* ClassInfo and StudentList components are siblings to each other. */}
+
+        <StudentList students={studentData}></StudentList>
+      </main>
+    </div>
   );
 }
 

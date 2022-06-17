@@ -1,6 +1,7 @@
 import React from "react";
 import "./StudentList.css";
 import Student from "./Student";
+import PropTypes from "prop-types";
 
 // The StudentList component is a container component, responsible for using presentational components
 
@@ -29,7 +30,7 @@ const StudentList = (props) => {
 
   const studentComponents = props.students.map((student, index) => {
     return (
-      <li key={index}>
+      <li key={student.emailData}>
         {/* Note that the official React documentation refers to using the index as a key of last resort. Ideally, we would be using something like a primary key value for our data. */}
         <Student name={student.nameData} email={student.emailData}></Student>
       </li>
@@ -53,6 +54,15 @@ const StudentList = (props) => {
       </ul>
     </section>
   );
+};
+
+StudentList.propTypes = {
+  studentData: PropTypes.arrayOf(
+    PropTypes.shape({
+      nameData: PropTypes.string.isRequired,
+      emailData: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default StudentList;

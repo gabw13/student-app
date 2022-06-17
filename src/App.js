@@ -1,5 +1,6 @@
 import StudentList from "./components/StudentList";
 import ClassInfo from "./components/ClassInfo";
+import Post from "./components/Post";
 import "./App.css";
 
 const studentData = [
@@ -28,6 +29,9 @@ function App() {
         {/* ClassInfo and StudentList components are siblings to each other. */}
 
         <StudentList students={studentData}></StudentList>
+        {/* <Post></Post>
+        <Post></Post>
+        <Post></Post> */}
       </main>
     </div>
   );

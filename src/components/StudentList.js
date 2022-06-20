@@ -30,9 +30,16 @@ const StudentList = (props) => {
 
   const studentComponents = props.students.map((student, index) => {
     return (
-      <li key={student.emailData}>
+      <li key={student.id}>
         {/* Note that the official React documentation refers to using the index as a key of last resort. Ideally, we would be using something like a primary key value for our data. */}
-        <Student name={student.nameData} email={student.emailData}></Student>
+        <Student
+          id={student.id}
+          name={student.nameData}
+          email={student.emailData}
+          isPresent={student.isPresentData}
+          onUpdate={props.onUpdateStudent}
+          deleteCallback={props.deleteCallback}
+        ></Student>
       </li>
     );
   });
@@ -59,10 +66,13 @@ const StudentList = (props) => {
 StudentList.propTypes = {
   studentData: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       nameData: PropTypes.string.isRequired,
       emailData: PropTypes.string.isRequired,
+      isPresentData: PropTypes.bool,
     })
   ),
+  onUpdateStudent: PropTypes.func.isRequired,
 };
 
 export default StudentList;

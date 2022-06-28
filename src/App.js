@@ -1,6 +1,7 @@
 import StudentList from "./components/StudentList";
 import ClassInfo from "./components/ClassInfo";
 // import Post from "./components/Post";
+import NewStudentForm from "./components/NewStudentForm";
 import "./App.css";
 import { useState } from "react";
 
@@ -42,6 +43,23 @@ function App() {
     },
   ]);
 
+  const addStudentData = (newStudent) => {
+    // Duplicate the student list
+    const newStudentList = [...studentData];
+
+    // Logic to generate the next valid student ID
+    const nextId = Math.max(...newStudentList.map((student) => student.id)) + 1;
+
+    newStudentList.push({
+      id: nextId,
+      nameData: newStudent.nameData,
+      emailData: newStudent.emailData,
+      isPresentData: false,
+    });
+
+    setStudentData(newStudentList);
+  };
+
   const updateStudentData = (updatedStudent) => {
     const students = studentData.map((student) => {
       if (student.id === updatedStudent.id) {
@@ -81,6 +99,7 @@ function App() {
         {/* <Post></Post>
         <Post></Post>
         <Post></Post> */}
+        <NewStudentForm addStudentCallback={addStudentData} />
       </main>
     </div>
   );
